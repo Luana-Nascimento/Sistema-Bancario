@@ -1,5 +1,7 @@
 package conta;
 
+import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import conta.model.Conta;
@@ -52,7 +54,15 @@ public class Menu {
 			System.out.println("*****************************************************");
 			System.out.println("Entre com a opção desejada:                          ");
 			System.out.println("                                                     ");
-			opcao = leia.nextInt();
+			
+			
+			try {
+			opcao = leia.nextInt(); 
+			} catch (InputMismatchException e) {
+				System.out.println("\nDigite valores inteiros!");
+				leia.nextLine(); 
+				opcao = 0;
+			}
 			
 			if(opcao == 9) {
 				System.out.println("\nBanco do Brazil com Z - O seu futuro começa aqui!");
@@ -64,35 +74,35 @@ public class Menu {
 			switch(opcao) {
 			case 1:
 				System.out.println("\n Criar Conta");
-				
+				keyPress();
                  break;
 			case 2:
 				System.out.println("\n Listar todas as Contas");
-				
+				keyPress();
                  break;
 			case 3:
 				System.out.println("\n Buscar Conta por número");
-				
+				keyPress();
 				break;
 			case 4:
 				System.out.println("\n Atualizar dados da Conta");
-				
+				keyPress();
                  break;
 			case 5:
 				System.out.println("\n Apagar Conta");
-				
+				keyPress();
                  break;
 			case 6:
 				System.out.println("\n Sacar");
-				
+				keyPress();
 				break;
              case 7:
 				System.out.println("\n Depositar");
-				
+				keyPress();
 				break;
              case 8:
 				System.out.println("\n Transferir");
-				
+				keyPress();
 				break;
 			default:
 				System.out.println("\nOpção Inválida");
@@ -100,6 +110,16 @@ public class Menu {
 			}
         }
 	}
+	
+	public static void keyPress() { 
+		try {
+			System.out.println(Cores.TEXT_RESET + "\n\nPressione Enter para continuar...");
+			System.in.read();
+		} catch (IOException e) {
+			System.out.println("Você pressionou uma tecla diferente de enter!");
+		}
+	}
+	
 	public static void sobre() {
 		System.out.println("\n*********************************************************");
 		System.out.println("Projeto Desenvolvido por: ");
